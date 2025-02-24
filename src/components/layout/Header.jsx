@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Bell, Search, Settings,Menu } from "lucide-react";
+import { Bell, Menu, Search, Settings } from "lucide-react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ConnectWalletButton from "./ui/connect-wallet-button";
 import { useWallet } from "../../context/WalletContext";
 import { truncateAddress } from "../../utils/helpers";
+import ConnectWalletButton from "./ui/connect-wallet-button";
 
 const mockNotifications = [
   {
@@ -70,13 +70,13 @@ const Header = ({ onMenuClick }) => {
   return (
     <header className="h-16 border-b border-gray-200 bg-white px-6">
       <div className="flex items-center justify-between h-full">
-        {/* Menu Button */} 
+        {/* Menu Button */}
         <button
-          className="p-2 text-gray-600 hover:text-gray-800 rounded-lg mr-4 hover:bg-gray-100"
+          className="p-2 text-gray-100 bg-blue-900  hover:text-blue-600 rounded-lg mr-4 hover:bg-gray-100"
           onClick={onMenuClick}
         >
           <Menu className="h-6 w-6" />
-        </button>  
+        </button>
 
         {/* Search Input */}
         <div className="relative w-full max-w-xs sm:max-w-md lg:max-w-lg">
@@ -131,10 +131,10 @@ const Header = ({ onMenuClick }) => {
             onMouseLeave={() => setActiveTooltip(null)}
           >
             <button
-              className="relative p-2 text-gray-400 hover:text-gray-500 rounded-full hover:bg-gray-100"
+              className="relative p-2 text-gray-400 bg-blue-900 hover:text-blue-600 rounded-full hover:bg-gray-100  border-none "
               onClick={() => setIsOpen(!isOpen)}
             >
-              <Bell className="h-6 w-6" />
+              <Bell className="h-6 w-6 text-gray-200 hover:text-blue-600" />
               {unreadCount > 0 && (
                 <span className="absolute -top-1 -right-1 h-2.5 w-2.5 bg-red-500 rounded-full"></span>
               )}
@@ -144,7 +144,7 @@ const Header = ({ onMenuClick }) => {
                 <div className="flex justify-between items-center px-4 py-2 border-b">
                   <span className="font-semibold">Notifications</span>
                   <button
-                    className="text-blue-500 text-sm"
+                    className="text-gray-200 bg-blue-900 text-sm"
                     onClick={markAllAsRead}
                   >
                     Mark all as read
@@ -181,12 +181,12 @@ const Header = ({ onMenuClick }) => {
           >
             <button
               onClick={() => handleNavClick("settings")}
-              className="flex items-center gap-2 px-3 py-2 text-left rounded-lg transition-colors hover:bg-gray-50"
+              className="flex bg-blue-900 items-center gap-2 px-3 py-2 text-left rounded-lg transition-colors hover:bg-gray-50"
             >
-              <Settings className="w-5 h-5 text-gray-600" />
+              <Settings className="w-5 h-5 text-gray-200 hover:text-blue-600" />
             </button>
             {activeTooltip === "settings" && (
-              <div className="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-gray-500 text-white text-xs px-2 py-2 rounded-md">
+              <div className="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-blue-900 text-white text-xs px-2 py-2 rounded-md">
                 Settings
               </div>
             )}

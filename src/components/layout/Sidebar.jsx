@@ -1,22 +1,19 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { NavLink } from "react-router-dom";
 import {
-  BookOpen,
   BarChart2,
-  Users,
-  Settings,
-  MessageSquare,
-  FileText,
-  Headphones,
-  MessageCircle,
-  GraduationCap,
   Book,
+  BookOpen,
   ChevronDown,
   ChevronRight,
+  FileText,
   Gamepad,
-  ShieldQuestion,
+  GraduationCap,
+  Headphones,
+  MessageCircle,
+  MessageSquare,
+  Users,
 } from "lucide-react";
+import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import Logo from "../../assets/S-icon-Photoroom.png";
 
 const Sidebar = ({ isOpen, onClose, headerHeight }) => {
@@ -66,13 +63,11 @@ const Sidebar = ({ isOpen, onClose, headerHeight }) => {
           <div className="mb-2">
             <button
               onClick={() => setIsLearningExpanded(!isLearningExpanded)}
-              className="flex items-center justify-between w-full px-3 py-2 rounded-lg transition-colors hover:bg-gray-50"
+              className="flex items-center justify-between w-full px-3 py-2 bg-blue-900 text-gray-100 hover:bg-gray-100 hover:text-blue-600 rounded-lg transition-colors "
             >
               <div className="flex items-center gap-3">
-                <BookOpen className="w-5 h-5 text-gray-700" />
-                <span className="text-sm font-medium text-gray-700">
-                  Learning content
-                </span>
+                <BookOpen className="w-5 h-5" />
+                <span className="text-sm font-medium ">Learning content</span>
               </div>
               {isLearningExpanded ? (
                 <ChevronDown className="w-4 h-4 text-gray-500" />
@@ -118,12 +113,10 @@ const Sidebar = ({ isOpen, onClose, headerHeight }) => {
                               `category-${item.label.toLowerCase()}`
                             )
                           }
-                          className="flex items-center gap-3 px-3 py-2 w-full text-left rounded-lg transition-colors hover:bg-gray-50"
+                          className="flex items-center gap-3 px-3 py-2 w-full text-left rounded-lg bg-blue-900 text-gray-100 hover:bg-gray-100 hover:text-blue-600 transition-colors "
                         >
-                          <span className="text-gray-600">{item.icon}</span>
-                          <span className="text-sm text-gray-700">
-                            {item.label}
-                          </span>
+                          <span className="">{item.icon}</span>
+                          <span className="text-sm ">{item.label}</span>
                         </button>
                       </NavLink>
                     ))}
@@ -138,14 +131,12 @@ const Sidebar = ({ isOpen, onClose, headerHeight }) => {
             <NavLink key={index} to={item.page}>
               <button
                 onClick={() => handleNavClick(item.page)}
-                className={`flex items-center gap-3 px-3 py-2 w-full text-left rounded-lg transition-colors ${
+            className={`flex items-center gap-3 px-3 py-2 w-full text-left rounded-lg transition-colors  bg-blue-900 text-gray-100 hover:bg-gray-100 hover:text-blue-600 ${
                   currentPage === item.page ? "bg-gray-50" : "hover:bg-gray-50"
                 }`}
               >
-                <span className="text-gray-600">{item.icon}</span>
-                <span className="text-sm font-medium text-gray-700">
-                  {item.label}
-                </span>
+                <span className="">{item.icon}</span>
+                <span className="text-sm font-medium ">{item.label}</span>
               </button>
             </NavLink>
           ))}
