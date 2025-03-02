@@ -1,3 +1,5 @@
+import ClearAllModal from "@/components/layout/ui/clear-all-modal";
+import { X } from "lucide-react";
 import { useState } from "react";
 
 const mockNotifications = [
@@ -25,7 +27,7 @@ const mockNotifications = [
 ];
 
 const NotificationCenter = () => {
-  const [notifications] = useState(mockNotifications);
+  const [notifications, setNotifications] = useState(mockNotifications);
   const [filter, setFilter] = useState("all");
 
   const filteredNotifications = notifications.filter((n) => {
@@ -34,6 +36,13 @@ const NotificationCenter = () => {
     return true;
   });
 
+  const deleteSingleNotification = (id)=>{
+    setNotifications(notification => notification.filter(data => data.id !==id))
+  }
+
+  const clearAllNotification = ()=>{
+    setNotifications([]) 
+  }
   return (
     <div className="w-full h-screen p-6 bg-white">
       <h2 className="text-xl font-bold mb-4">Notifications</h2>
@@ -62,19 +71,26 @@ const NotificationCenter = () => {
         >
           Read
         </button>
+        <ClearAllModal filter={filter} onClearAll={clearAllNotification} />
       </div>
       <div className="space-y-4">
         {filteredNotifications.length > 0 ? (
           filteredNotifications.map((notification) => (
             <div
               key={notification.id}
-              className="p-4 border rounded-lg shadow-sm bg-gray-100"
+              className="p-4 border rounded-lg shadow-sm bg-gray-100 flex justify-between items-center"
             >
-              <p className="font-semibold">{notification.title}</p>
-              <p className="text-gray-600 text-sm">{notification.message}</p>
-              <p className="text-gray-500 text-xs mt-1">
-                {notification.timestamp}
-              </p>
+              <div>
+                <p className="font-semibold">{notification.title}</p>
+                <p className="text-gray-600 text-sm">{notification.message}</p>
+                <p className="text-gray-500 text-xs mt-1">
+                  {notification.timestamp}
+                </p>
+              </div>
+              <X
+                className="text-[#6b7280] hover:text-[#ef4444]"
+                onClick={() => deleteSingleNotification(notification.id)}
+              />
             </div>
           ))
         ) : (

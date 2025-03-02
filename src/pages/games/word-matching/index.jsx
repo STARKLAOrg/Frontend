@@ -1,5 +1,5 @@
 import React from 'react';
-import WordMatchingGame from '../../../components/games/word-matching/word-matching-game';
+import WordMatchingGame from '@/components/Games/word-matching/word-matching-game';
 
 const MatchingGamePage = () => {
   return (
@@ -16,4 +16,4 @@ const MatchingGamePage = () => {
   );
 };
 
-export default MatchingGamePage;
+export default MatchingGamePage;""

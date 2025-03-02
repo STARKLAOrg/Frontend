@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { WORD_PAIRS, GAME_SETTINGS } from './mock-data-word-matching/word-matching';
-import Card from './card';
+import Card from '@/components/games/word-matching/Card';
 import ScoreDisplay from './score-display';
 
 const GameBoard = ({ difficulty, settings, onGameOver, onScoreUpdate }) => {
